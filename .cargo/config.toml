@@ -1,0 +1,21 @@
+[toolchain]
+channel = "nightly"
+
+[unstable]
+build-std = ["panic_abort", "core", "alloc", "compiler_builtins"]
+build-std-features = ["panic_immediate_abort", "compiler-builtins-mem"]
+
+[build]
+#target = "x86_64-pc-windows-msvc" # compiles
+target = "i686-pc-windows-msvc"  # does not compile
+
+
+[target.x86_64-pc-windows-msvc]
+rustflags = [
+    "-C", "link-arg=/entry:main",
+]
+
+[target.i686-pc-windows-msvc]
+rustflags = [
+    "-C", "link-arg=/entry:main",
+]
